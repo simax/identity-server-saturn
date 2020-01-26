@@ -5,12 +5,12 @@ open Microsoft.Extensions.DependencyInjection
 module Config =
     open IdentityServer4.Models
     let getIdentityResources() = [ IdentityResources.OpenId() :> IdentityResource ]
-    let getApis() = [ ApiResource("api1", "My API") ]
+    let getApis() = [ ApiResource("ekm-cart-api", "EKM Cart API") ]
     let getClients() =
         [ Client(ClientId = "client",
                  AllowedGrantTypes = GrantTypes.ClientCredentials,
                  ClientSecrets = ResizeArray [ Secret("secret".Sha256()) ],
-                 AllowedScopes = ResizeArray [ "api1" ]) ]
+                 AllowedScopes = ResizeArray [ "ekm-cart-api"]) ]
 
 let configIdentity (app:IApplicationBuilder) = 
     app.UseIdentityServer()
